@@ -1,0 +1,114 @@
+html,
+body,
+.tab-pane {
+  height: 100%;
+}
+.tab-content {
+  height: calc(100% - 3rem);
+}
+
+/* NAVBAR */
+
+@media (min-width: 1200px) {
+  .navbar {
+    height: 3rem;
+  }
+}
+
+.navbar {
+  padding: 0.1rem 1rem;
+}
+.navbar-brand img {
+  height: 2rem;
+  width: 2rem;
+}
+.navbar-brand {
+  line-height: 2rem;
+}
+
+/* DATATABLES */
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+  display: flex;
+  flex-flow: column;
+}
+/**
+table.dataTable > tbody > tr.child ul.dtr-details li {
+	display: flex;
+	padding: 0.6rem;
+	justify-content: space-between;
+}
+/**/
+table.dataTable > tbody > tr.child ul.dtr-details li {
+  display: grid;
+  padding: 0.6rem 0;
+}
+/**/
+
+.checkEditorGroup .DTE_Field_InputControl > div {
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+div.dataTables_wrapper div.dataTables_processing {
+  border-radius: 2rem;
+}
+
+/* SPINNER */
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner .spinner-db {
+  background-image: url("/../Progetti/content_manager_better/assets/db.svg");
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.spinner .spinner-arrow {
+  background-image: url("/../Progetti/content_manager_better/assets/spinner.svg");
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  width: 200px;
+  margin-top: -200px;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 2000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 2000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 2000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(360deg);
+}
