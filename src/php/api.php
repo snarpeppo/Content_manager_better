@@ -10,13 +10,11 @@ $action = require_get('action');
 $db = new db_connection();
 switch ($action) {
 	case 'parseUrlForSource':
-		$url = require_get('url');
-		$urlParsed = parsedUrl($url);
-		$query = "SELECT Name FROM content_source WHERE regex = :urlParsed";
-		$name = $db->fetchAll($query, [
+		$urlParsed = parsedUrl(require_get('url'));
+		$pk = $db->fetchAll("SELECT pk_source FROM content_source WHERE regex = :urlParsed", [
 			':urlParsed' => $urlParsed,
-		])[0]["Name"];
-		_json_ok($name);
+		])[0]["pk_source"];
+		_json_ok($pk);
 		break;
 
 	case 'approveSubmission':
@@ -40,6 +38,27 @@ switch ($action) {
 		$sth = $db->UpdateOrDelete($query, [
 			':id' => require_get('id')
 		]);
+		_json_ok($sth);
+		break;
+
+	case 'populateSelectTags':
+		$query =
+			"SELECT content_source.name as `source`,
+			GROUP_CONCAT(DISTINCT content_tag.name) 
+			AS tags FROM content_submission
+		LEFT JOIN content_source 
+			ON content_submission.fk_source_name = pk_source
+		JOIN content_x_submission_tag 
+			ON content_submission.pk_submission = content_x_submission_tag.fk_multimedia_format
+		JOIN content_tag 
+			ON content_x_submission_tag.fk_tag = pk_tag
+		WHERE 
+			content_source.pk_source = :source
+		GROUP BY pk_source";
+		$sth = $db->fetchAll($query, [
+			':source' => require_get('source')
+		])[0]['tags'];
+		// var_dump($sth);
 		_json_ok($sth);
 		break;
 }

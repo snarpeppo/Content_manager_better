@@ -1,14 +1,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Content Manager</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../../content_manager_better/src/css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../src/js/utils.js"></script>
+    <?php include('template/headContent.php') ?>
 </head>
 
 <body class='bg-light'>
@@ -36,10 +29,14 @@
                             <input type="url" name="url" class="form-control" id="url">
                         </div>
                     </div>
+                    <!-- hidden source -->
+                    <input name="source" id="source" value='' type="hidden" class="form-control">
+
                     <div class="row">
                         <div class="mt-3 col-9 mx-auto">
-                            <label for="url" class="form-label">Category:</label>
-                            <input type="text" name="category" id="category" value='' class="form-control">
+                            <label for="tags" class="form-label">Tags:</label>
+                            <select class="tags form-control" name="" multiple="multiple">
+                            </select>
                         </div>
                     </div>
 
@@ -58,20 +55,32 @@
     </div>
 </footer>
 <script>
-    $('#url').keyup(() => {
+    $(document).on('keyup mouseup', '#url', () => {
+        // $('#url').on('keyup', () => {
         let URL = $("#url").val();
         console.log(URL);
-        if (URL !== 'https://' || URL !== 'http://')
-            $("#category").val('');
+        if (!URL.match(/^https?:\/\//i))
+            $("#source").val('');
         $('#submit').prop('disabled', true);
         ask('parseUrlForSource', {
             url: URL,
         }).then((response) => {
             console.log(response);
-            $('#category').val(response);
+            $('#source').val(response);
             $('#submit').prop('disabled', false);
+            let source = $("#source").val();
+            ask('populateSelectTags', {
+                source
+            }).then((response) => {
+                $('.tags').select2({
+                    data: response.split(','),
+                });
+            });
         });
     });
+</script>
+<script>
+
 </script>
 </body>
 
