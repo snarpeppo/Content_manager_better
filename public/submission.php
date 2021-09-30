@@ -16,7 +16,7 @@
         <div class="row">
             <div class="bg-white mx-auto shadow mt-5 py-4 col-7">
                 <h3 class="text-primary text-center fs-2">Make a submission!</h3>
-                <form class="white" action="../controller/processor.php" method="post">
+                <form class="white" action="../src/php/processor.php" method="post">
                     <div class="row">
                         <div class="mt-3 col-9 mx-auto">
                             <label for="email" class="form-label">Your Email:</label>
@@ -35,11 +35,36 @@
                     <div class="row">
                         <div class="mt-3 col-9 mx-auto">
                             <label for="tags" class="form-label">Tags:</label>
-                            <select class="tags form-control" name="" multiple="multiple">
+                            <select class="tags form-control" name="tags" multiple="multiple">
                             </select>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="mt-3 col-9 mx-auto">
+                            <label for="format" class="form-label">Choose the format:</label>
+                        </div>
+                        <div class="row">
+                            <div class="mt-3 col-9 mx-auto">
+                                <input class="form-check-input" type="radio" name="format" id="format" value="audio">
+                                <label class="form-check-label" for="format">
+                                    Audio
+                                </label>
+                                <input class="form-check-input" type="radio" name="format" id="format" value="video">
+                                <label class="form-check-label" for="format">
+                                    Video
+                                </label>
+                                <input class="form-check-input" type="radio" name="format" id="format" value="immagine">
+                                <label class="form-check-label" for="format">
+                                    Picture
+                                </label>
+                                <input class="form-check-input" type="radio" name="format" id="format" value="testo">
+                                <label class="form-check-label" for="format">
+                                    Text
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-5 text-center">
                         <input type="hidden" name="dateadded" value="1632816754">
                         <input type="submit" value="Submit" name='submit' id='submit' class="btn btn-primary btn-submission" disabled>
@@ -78,10 +103,18 @@
             });
         });
     });
+    $('.tags').select2({
+        data: []
+    });
 </script>
-<script>
-
-</script>
+<!-- <script>
+    $(document).ready(function() {
+        $("input[type='radio']").on('click', function() {
+            let format = $("input[name='format']:checked").val();
+            console.log(format);
+        })
+    });
+</script> -->
 </body>
 
 </html>

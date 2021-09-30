@@ -23,7 +23,7 @@ Editor::inst( $db, 'content_tag', 'pk_tag' )
 		->join(
 			Mjoin::inst('content_submission')
 			->link( 'content_tag.pk_tag', 'content_x_submission_tag.fk_tag' )
-			->link( 'content_submission.pk_submission', 'content_x_submission_tag.fk_multimedia_format' )
+			->link( 'content_submission.pk_submission', 'content_x_submission_tag.fk_submission' )
 			->fields(
 				Field::inst( 'pk_submission' )
 					->validator( Validate::required() )
@@ -37,5 +37,3 @@ Editor::inst( $db, 'content_tag', 'pk_tag' )
 		)
 	->process( $_POST )
 	->json();
-
-?>

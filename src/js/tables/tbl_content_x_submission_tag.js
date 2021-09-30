@@ -3,7 +3,7 @@
 	let editor = new $.fn.dataTable.Editor({
 		ajax: '/../Progetti/content_manager_better/dt/tbl_content_x_submission_tag.php',
 		table: '#tbl_content_x_submission_tag',
-		fields: [{ name: 'content_x_submission_tag.fk_multimedia_format', label: 'content_submission (url):', type: "select" }, { name: 'content_x_submission_tag.fk_tag', label: 'content_tag (name):', type: "select" },]
+		fields: [{ name: 'content_x_submission_tag.fk_submission', label: 'content_submission (url):', type: "select" }, { name: 'content_x_submission_tag.fk_tag', label: 'content_tag (name):', type: "select" },]
 	});
 
 	let table = $('#tbl_content_x_submission_tag').DataTable({

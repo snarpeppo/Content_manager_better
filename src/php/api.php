@@ -49,7 +49,7 @@ switch ($action) {
 		LEFT JOIN content_source 
 			ON content_submission.fk_source_name = pk_source
 		JOIN content_x_submission_tag 
-			ON content_submission.pk_submission = content_x_submission_tag.fk_multimedia_format
+			ON content_submission.pk_submission = content_x_submission_tag.fk_submission
 		JOIN content_tag 
 			ON content_x_submission_tag.fk_tag = pk_tag
 		WHERE 
@@ -61,4 +61,4 @@ switch ($action) {
 		// var_dump($sth);
 		_json_ok($sth);
 		break;
-}
+};
