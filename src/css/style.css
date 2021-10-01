@@ -10,10 +10,7 @@ body,
 /* NAVBAR */
 
 @media (min-width: 1200px) {
-  .navbar {
-    /*height: 3rem;*/
-    
-  }
+  /*height: 3rem;*/
 }
 
 .navbar {
