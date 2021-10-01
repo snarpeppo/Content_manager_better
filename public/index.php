@@ -21,7 +21,8 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- STILE -->
-    <link rel="stylesheet" href="style/style2.css">
+    <!-- link rel="stylesheet" href="style/style2.css" -->
+    <link rel="stylesheet" href="../src/css/homepage_style.css">
 
 </head>
 
@@ -31,7 +32,7 @@
         <div class="logo_content">
             <div class="logo">
                 <div class="logo_name">
-                    <img src="img/finsoft-logo.png" alt="" class="img-fluid">
+                    <img src="./../assets/img/finsoft-logo.png" alt="" class="img-fluid">
                 </div>
             </div>
             <i class='bx bx-menu' id="btn"></i>
@@ -83,7 +84,7 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="./img/gabbo.jpg" alt="">
+                    <img src="./../assets/img/gabbo.jpg" alt="">
                     <div class="name_job">
                         <div class="name">Gabriele Battistata</div>
                         <div class="job">Junior Web-app</div>
@@ -163,7 +164,7 @@
     </div>
 
 
-    <script src="script/main.js"></script>
+    <script src="../src/js/homepage_script.js"></script>
     
 </body>
 </html>
