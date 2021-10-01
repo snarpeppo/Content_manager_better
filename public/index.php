@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" dir="ltr">
+<html lang="it">
 
 <head>
   <?php include('template/headHome.php') ?>
@@ -150,7 +150,7 @@
 
   <!-- <script src="../../content_manager_better/src/js/homepage_script.js"></script> -->
 
-  <script type="text/javascript" src="../src/js/homepage_script.js"></script>
+  <script type="text/javascript" src="../../content_manager_better/src/js/homepage_script.js"></script>
 
 </body>
 
