@@ -148,7 +148,7 @@
     </div>
   </div>
 
-  <!-- <script src="../../content_manager_better/src/js/home.js"></script> -->
+  <!-- <script src="../../content_manager_better/src/js/homepage_script.js"></script> -->
 
   <script type="text/javascript" src="../src/js/homepage_script.js"></script>
 
