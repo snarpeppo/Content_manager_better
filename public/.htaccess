@@ -1,0 +1,6 @@
+RewriteEngine On
+DirectoryIndex test.php
+RewriteBase /Progetti/content_manager_better/src/routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ test.php [QSA,L]
