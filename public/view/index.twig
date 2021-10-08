@@ -92,22 +92,13 @@
 			<i class='bx bx-log-out' id="log_out"></i>
 		</div>
 		{# PAGE CONTENT #}
-		<div class="home_content m-2">
-			<div class="d-flex flex-wrap justify-content-between">
-				<div class="card" style="width: 17rem;">
-					<div class="card-body">
-						<h5 class="card-title">Categorys</h5>
-						<p class="card-text">
-							<ul>
-								{% for tag in tags %}
-									<li value='{{ tag.pk_tag }}'>{{ tag.name }}</li>
-								{% endfor %}
-							</ul>
-						</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
-					</div>
-				</div>
-			</div>
+		<div class="home_content parent">
+
+			<div class="div1 h-100"></div>
+			<div class="div2 h-100"></div>
+			<div class="div3 h-100"></div>
+			<div class="div4 h-100"></div>
+
 		</div>
 
 		<!-- <script src="../../content_manager_better/src/js/homepage_script.js"></script> -->

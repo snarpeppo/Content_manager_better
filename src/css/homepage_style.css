@@ -262,7 +262,7 @@ body {
   margin: 12px;
   height: 100%;
   width: calc(100% - 78px);
-  left: 78px;
+  left: 3.5vw;
   transition: all 0.5s ease;
 }
 
@@ -277,4 +277,29 @@ body {
   width: calc(100% - 300px);
   left: 300px;
   /* display: none; */
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 10px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 3 / 4;
+  background-color: palevioletred;
+}
+.div2 {
+  grid-area: 3 / 1 / 6 / 2;
+  background-color: green;
+}
+.div3 {
+  grid-area: 3 / 2 / 6 / 3;
+  background-color: red;
+}
+.div4 {
+  grid-area: 3 / 3 / 6 / 4;
+  background-color: blue;
 }

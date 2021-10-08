@@ -25,7 +25,7 @@
 			[5, 10, 25, 50, 75, 100, 200, 500, 'All']
 		],
 		pageLength: 50,
-		dom: 'Brftlip',
+		dom: 'B<"customB btn-group flex-wrap d-inline-block">rftlip',
 		language: {
 			lengthMenu: 'Mostra _MENU_',
 			zeroRecords: 'Nessun record',
@@ -34,7 +34,6 @@
 			infoFiltered: '(_TOTAL_ record)'
 		},
 		order: [],
-		dom: 'Brftlip',
 		columns: [{ data: 'content_submission.url', orderable: true, searchable: true }, { data: 'content_submission.email', orderable: true, searchable: true }, { data: 'content_submission.state', orderable: true, searchable: true }, { data: 'content_submission.ip', orderable: true, searchable: true }, { data: 'content_submission.date', orderable: true, searchable: true }, { data: 'content_submission.multimedia_format', orderable: true, searchable: true }, { data: 'content_source.name', orderable: true, searchable: true }, { data: 'content_tag', render: '[, ].name', orderable: true, searchable: true },],
 		buttons: [{
 			extend: 'create',
@@ -55,70 +54,59 @@
 			extend: 'collection',
 			text: 'Esporta',
 			buttons: ['copy', 'excel', 'csv', 'pdf', 'print']
-		}, {
-			//approved
-			text: "Approve",
-			extend: "selectedSingle",
-			className: "btn btn-success btn-lg btn-rounded ml-5",
-			editor: editor,
-			action: function (e, datat, node, config) {
-				let ID = table.row({ selected: true }).data().content_submission.pk_submission;
-				console.log(ID)
-				ask("approveSubmission", {
-					id: ID,
-				}).then((response) => {
-					if (response === true) {
-						alert("submission approved");
-					} else {
-						alert("Impossibile to approve: " + response);
-					}
-					datat.ajax.reload(null, false);
-				});
-			},
-
-		}, {
-			//pending
-			text: "Pending",
-			extend: "selectedSingle",
-			className: "btn btn-warning btn-lg btn-rounded",
-			editor: editor,
-			action: function (e, datat, node, config) {
-				let ID = table.row({ selected: true }).data().content_submission.pk_submission;
-				console.log(ID)
-				ask("backToPending", {
-					id: ID,
-				}).then((response) => {
-					if (response === true) {
-						alert("submission back to pending");
-					} else {
-						alert("Impossibile pending: " + response);
-					}
-					datat.ajax.reload(null, false);
-				});
-			},
-
-		}, {
-			//rejected
-			text: "Reject",
-			extend: "selectedSingle",
-			className: "btn btn-danger btn-lg btn-rounded",
-			editor: editor,
-			action: function (e, datat, node, config) {
-				let ID = table.row({ selected: true }).data().content_submission.pk_submission;
-				console.log(ID)
-				ask("rejectSubmission", {
-					id: ID,
-				}).then((response) => {
-					if (response === true) {
-						alert("submission Rejected");
-					} else {
-						alert("Impossibile to Reject: " + response);
-					}
-					datat.ajax.reload(null, false);
-				});
-			},
-
-		},]
+		}]
 	});
 	tables['tbl_content_submission'] = { table, editor };
+
+	$("div.customB").html('<div class="btn-group ml-3" role="group"  aria-label="Status Buttons">'
+		+ '<button type="button" class="btn btn-primary">Accept</button>'
+		+ '<button type="button" class="btn btn-warning">Pending</button>'
+		+ '<button type="button" class="btn btn-danger">Reject</button>'
+		+ '</div>');
 })();
+
+const approved = () => {
+	let ID = tables.tbl_content_submission.table.row({ selected: true }).data().content_submission.pk_submission;
+	console.log(ID)
+	ask("approveSubmission", {
+		id: ID,
+	}).then((response) => {
+		if (response === true) {
+			alert("submission approved");
+		} else {
+			alert("Impossibile to approve: " + response);
+		}
+		tables.tbl_content_submission.table.ajax.reload(null, false);
+	});
+};
+
+const pending = () => {
+	let ID = tables.tbl_content_submission.table.row({ selected: true }).data().content_submission.pk_submission;
+	console.log(ID)
+	ask("rejectSubmission", {
+		id: ID,
+	}).then((response) => {
+		if (response === true) {
+			alert("submission Rejected");
+		} else {
+			alert("Impossibile to Reject: " + response);
+		}
+		tables.tbl_content_submission.table.ajax.reload(null, false);
+	});
+}
+
+const rejected = () => {
+	let ID = tables.tbl_content_submission.table.row({ selected: true }).data().content_submission.pk_submission;
+	console.log(ID)
+	ask("rejectSubmission", {
+		id: ID,
+	}).then((response) => {
+		if (response === true) {
+			alert("submission Rejected");
+		} else {
+			alert("Impossibile to Reject: " + response);
+		}
+		tables.tbl_content_submission.table.ajax.reload(null, false);
+	});
+
+}
