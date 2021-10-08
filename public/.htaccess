@@ -1,6 +1,8 @@
 RewriteEngine On
-DirectoryIndex test.php
-RewriteBase /Progetti/content_manager_better/src/routes
+DirectoryIndex index.php
+RewriteBase /Progetti/content_manager_better/public/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ test.php [QSA,L]
+RewriteRule ^ index.php [QSA,L]
+
+
