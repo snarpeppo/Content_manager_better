@@ -262,7 +262,8 @@ body {
   margin: 12px;
   height: 100%;
   width: calc(100% - 78px);
-  left: 3.5vw;
+  left: 75px;
+  right: 75px;
   transition: all 0.5s ease;
 }
 
